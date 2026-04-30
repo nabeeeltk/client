@@ -5,7 +5,7 @@ import axios from 'axios';
  */
 const api = axios.create({
   // Your Vercel backend URL
-  baseURL: 'https://server-c6du4omry-nabeel-tks-projects.vercel.app/api',
+  baseURL: 'https://server-3674vestg-nabeel-tks-projects.vercel.app',
   headers: { 'Content-Type': 'application/json' }
 });
 

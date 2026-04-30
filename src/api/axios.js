@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: '/api',
+  // Add /api to the end of your URL
+  baseURL: 'https://server-3674vestg-nabeel-tks-projects.vercel.app/api', 
   headers: { 'Content-Type': 'application/json' }
-})
+});
 
 // Attach token to every request
 api.interceptors.request.use((config) => {
