@@ -1,17 +1,14 @@
 import axios from 'axios'
 
 const api = axios.create({
-  // Use your new environment variable here
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: '/api',
   headers: { 'Content-Type': 'application/json' }
 })
 
 // Attach token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
+  if (token) config.headers.Authorization = `Bearer ${token}`
   return config
 })
 
@@ -22,8 +19,7 @@ api.interceptors.response.use(
     if (err.response?.status === 401) {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
-      // Using .replace is slightly better for UX so they can't click "back" to the locked page
-      window.location.replace('/login')
+      window.location.href = '/login'
     }
     return Promise.reject(err)
   }
